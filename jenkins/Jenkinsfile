@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Archive') {
             steps {
-                archiveArtifacts '**/*.txt',
+                archiveArtifacts artifacts: '**/*.txt',
                    allowEmptyArchive: true,
                    fingerprint: true,
                    onlyIfSuccessful: true
