@@ -22,12 +22,12 @@ pipeline {
         }
         stage('Deliver') {
             steps {
-                sh 'touch test.txt'
+                sh 'mkdir artifacts'
             }
         }
         stage('Archive') {
             steps {
-                archiveArtifacts artifacts: 'com/mycompany/app/*.txt',
+                archiveArtifacts artifacts: 'artifacts/**/*.txt',
                    allowEmptyArchive: true,
                    fingerprint: true,
                    onlyIfSuccessful: true
