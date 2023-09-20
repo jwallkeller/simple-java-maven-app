@@ -21,6 +21,14 @@ pipeline {
                 sh './jenkins/scripts/deliver.sh'
             }
         }
+        stage('Archive') {
+            steps {
+                archiveArtifacts '**/*.txt',
+                   allowEmptyArchive: true,
+                   fingerprint: true,
+                   onlyIfSuccessful: true
+            }
+        }
         stage('Complete') {
             steps {
                 echo 'Job Complete!'
