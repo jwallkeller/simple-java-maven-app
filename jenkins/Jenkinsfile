@@ -22,7 +22,11 @@ pipeline {
         }
         stage('Deliver') {
             steps {
-                sh 'mkdir artifacts'
+                script {
+                  if (!fileExists("artifacts")) {
+                    sh "mkdir artifacts"
+                  }
+                }
                 sh 'touch artifacts/test.txt'
             }
         }
